@@ -1,4 +1,5 @@
 class Solution {
+
     public ListNode sortList(ListNode head) {
         // merge sort, cut in half
         // choose the left middle node
