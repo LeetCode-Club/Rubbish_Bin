@@ -11,6 +11,7 @@
 | 147 | Insertion Sort List  | ★★★        |                  |   |   |   |   |   |   | insertion sort             |
 | 148 | Sort List            | ★★★★       |                  |   |   |   |   |   |   | merge sort O(1) space      |
 | 707 | Design Linked List   | ★★★★       |                  |   |   |   |   |   |   |                            |
+| 146 | LRU Cache            | ★★★★       |                  |   |   |   |   |   |   | veeeeery important!!       |
 
 ## jiqing
 ### 24.Swap Nodes in Pairs
