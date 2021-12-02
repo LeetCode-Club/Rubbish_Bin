@@ -13,9 +13,15 @@
 | 707 | Design Linked List   | ★★★★       |                  |   |   |   |   |   |   |                            |
 
 ## jiqing
+### 24.Swap Nodes in Pairs
+use <font color = red>*recursion*</font>, we only think about the first 2 node, swap them and make the 2nd node link to swap(2nd.next).
+### 206.Reverse Linked List
+use <font color = red>*recursion*</font>, we only think about the fisrt 2 node swap them and then recurse the other nodes, return the last node in the end.
+
 
 
 ## zixin
+
 
 
 ## kim
