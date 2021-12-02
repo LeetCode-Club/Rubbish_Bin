@@ -2,9 +2,9 @@ public class ListNode {
     int val;
     ListNode next;
     ListNode(int x) { val = x; }
-  }
+}
   
-  class MyLinkedList {
+class MyLinkedList {
     int size;
     ListNode head;  // sentinel node as pseudo-head
     public MyLinkedList() {
@@ -69,4 +69,4 @@ public class ListNode {
       // delete pred.next 
       pred.next = pred.next.next;
     }
-  }
+}
