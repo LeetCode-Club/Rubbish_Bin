@@ -19,5 +19,16 @@ class Solution:
             node2.next=node1
             temp=node1
         return dummyhead.next
+
+
+    def swapPairs(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        newHead = head.next
+        head.next = self.swapPairs(newHead.next)
+        newHead.next = head
+        return newHead
+
+#递归做法
             
         
