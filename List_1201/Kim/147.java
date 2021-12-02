@@ -1,4 +1,3 @@
-package List_1201.Kim;
 class Solution {
     public ListNode oddEvenList(ListNode head) {
         ListNode oddHead = new ListNode(0);
