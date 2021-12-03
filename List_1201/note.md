@@ -16,8 +16,10 @@
 ## jiqing
 ### 24.Swap Nodes in Pairs
 Use <font color = red>*recursion*</font>, we can only think about the first 2 node, swap them and make the 2nd node link to swap(2nd.next).
+
 ### 206.Reverse Linked List
 Use <font color = red>*recursion*</font>, we can only think about the fisrt 2 node swap them and then recurse the other nodes, return the last node in the end.
+
 ### 92.Reverse Linked List II
 In this question, we can solve such a subquestion at first:<br>
 <font color = green>***Reverse first N nodes of a LinkedList***</font><br>
@@ -41,6 +43,11 @@ public ListNode reverseBetween(ListNode head, int left, int right) {
     return head;
 }
 ```
+
+### 148.Sort List
+If we put all the value of node in a list and sort the list then use this list to make a new list, this question will be easy to solve.<br>
+The better solution is to use Divide & Conquer.
+
 ### 707.Design Linked List
 When we insert the node, make sure we find the correct position to add.
 ```
@@ -65,6 +72,9 @@ public void addAtIndex(int index, int val) {
     pred.next = toAdd;
 }
 ```
+
+### 146.LRU Cache
+The key point to slove this problem is to use DlinkedNode which has a prev node and a next node.
 ## zixin
 
 
