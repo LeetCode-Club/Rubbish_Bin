@@ -1,3 +1,4 @@
+package Rubbish_Bin.Graph_1203.kim;
 class Solution {
     private Map<Node, Node> map = new HashMap<>();
 

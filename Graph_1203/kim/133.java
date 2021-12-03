@@ -1,3 +1,4 @@
+package Rubbish_Bin.Graph_1203.kim;
 // classic dfs
 class Solution {
     // use map because need to track if we have already add it into the new graph
