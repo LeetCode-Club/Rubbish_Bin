@@ -8,20 +8,22 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-//this question is easy, no comment!
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode(0);
         ListNode tail = ans;
-        int sum = 0;
-        while(l1 != null || l2 != null || sum > 0) {
-            sum += (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val);
-            tail.next = new ListNode(sum % 10);
+        while(l1 != null && l2 != null) {
+            if(l1.val < l2.val) {
+                tail.next = l1;
+                l1 = l1.next;
+            } else {
+                tail.next = l2;
+                l2 = l2.next;
+            }
             tail = tail.next;
-            sum /= 10;
-            if(l1 != null) l1 = l1.next;
-            if(l2 != null) l2 = l2.next;
         }
+        if(l1 != null) tail.next = l1;
+        if(l2 != null) tail.next = l2;
         return ans.next;
     }
 }
