@@ -15,11 +15,34 @@
 
 ## jiqing
 ### 24.Swap Nodes in Pairs
-use <font color = red>*recursion*</font>, we only think about the first 2 node, swap them and make the 2nd node link to swap(2nd.next).
+Use <font color = red>*recursion*</font>, we can only think about the first 2 node, swap them and make the 2nd node link to swap(2nd.next).
 ### 206.Reverse Linked List
-use <font color = red>*recursion*</font>, we only think about the fisrt 2 node swap them and then recurse the other nodes, return the last node in the end.
+Use <font color = red>*recursion*</font>, we can only think about the fisrt 2 node swap them and then recurse the other nodes, return the last node in the end.
+### 92.Reverse Linked List II
+In this question, we can solve such a subquestion at first:<br>
+<font color = green>***Reverse first N nodes of a LinkedList***</font><br>
+```
+public ListNode reverseN(ListNode head, int n) {
+    if(n == 1) {
+        successor = head.next;
+        return head;
+    }
+    ListNode last = reverseN(head.next, n - 1);
+    head.next.next = head;
+    head.next = successor;
+    return last;
+}
+```
+Then if left = 1, the question is as same as **Reverse first N nodes of a LinkedList**. If not we can use recursion to move the list to make left = 1.<br>
+```
+public ListNode reverseBetween(ListNode head, int left, int right) {
+    if(left == 1) return reverseN(head, right);
+    head.next = reverseBetween(head.next, left - 1, right - 1);
+    return head;
+}
+```
 ### 707.Design Linked List
-when we insert the node, make sure we find the correct position to add.
+When we insert the node, make sure we find the correct position to add.
 ```
 public void addAtIndex(int index, int val) {
     // If index is greater than the length, 
