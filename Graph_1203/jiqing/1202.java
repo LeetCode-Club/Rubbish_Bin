@@ -1,87 +1,46 @@
 class Solution {
-
+    private int[] parent;
     public String smallestStringWithSwaps(String s, List<List<Integer>> pairs) {
-        if (pairs.size() == 0) {
-            return s;
+        if (s == null || s.length() == 0) {
+            return null;
         }
-
-        // 第 1 步：将任意交换的结点对输入并查集
-        int len = s.length();
-        UnionFind unionFind = new UnionFind(len);
+        parent = new int[s.length()];
+        for (int i = 0; i < parent.length; i++) {
+            parent[i] = i;
+        }
+        
         for (List<Integer> pair : pairs) {
-            int index1 = pair.get(0);
-            int index2 = pair.get(1);
-            unionFind.union(index1, index2);
+            union(pair.get(0), pair.get(1));
         }
-
-        // 第 2 步：构建映射关系
-        char[] charArray = s.toCharArray();
-        // key：连通分量的代表元，value：同一个连通分量的字符集合（保存在一个优先队列中）
-        Map<Integer, PriorityQueue<Character>> hashMap = new HashMap<>(len);
-        for (int i = 0; i < len; i++) {
-            int root = unionFind.find(i);
-            if (hashMap.containsKey(root)) {
-                hashMap.get(root).offer(charArray[i]);
-            } else {
-                // PriorityQueue<Character> minHeap = new PriorityQueue<>();
-                // minHeap.offer(charArray[i]);
-                // hashMap.put(root, minHeap);
-                // 上面三行代码等价于下面一行代码，JDK 1.8 以及以后支持下面的写法
-                hashMap.computeIfAbsent(root, key -> new PriorityQueue<>()).offer(charArray[i]);
-            }
+        
+        Map<Integer, PriorityQueue<Character>> map = new HashMap<>();
+        char[] sChar = s.toCharArray();
+        for (int i = 0; i < sChar.length; i++) {
+            int root = find(i);
+            map.putIfAbsent(root, new PriorityQueue<>());
+            map.get(root).offer(sChar[i]);
         }
-
-        // 第 3 步：重组字符串
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < len; i++) {
-            int root = unionFind.find(i);
-            stringBuilder.append(hashMap.get(root).poll());
+        
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sChar.length; i++) {
+            sb.append(map.get(find(i)).poll());
         }
-        return stringBuilder.toString();
+        return sb.toString();
     }
-
-    private class UnionFind {
-
-        private int[] parent;
-        /**
-         * 以 i 为根结点的子树的高度（引入了路径压缩以后该定义并不准确）
-         */
-        private int[] rank;
-
-        public UnionFind(int n) {
-            this.parent = new int[n];
-            this.rank = new int[n];
-            for (int i = 0; i < n; i++) {
-                this.parent[i] = i;
-                this.rank[i] = 1;
-            }
+    private int find(int index) {
+        while (parent[index] != index) {
+            parent[index] = parent[parent[index]];
+            index = parent[index];
         }
-
-        public void union(int x, int y) {
-            int rootX = find(x);
-            int rootY = find(y);
-            if (rootX == rootY) {
-                return;
-            }
-
-            if (rank[rootX] == rank[rootY]) {
-                parent[rootX] = rootY;
-                // 此时以 rootY 为根结点的树的高度仅加了 1
-                rank[rootY]++;
-            } else if (rank[rootX] < rank[rootY]) {
-                parent[rootX] = rootY;
-                // 此时以 rootY 为根结点的树的高度不变
-            } else {
-                // 同理，此时以 rootX 为根结点的树的高度不变
-                parent[rootY] = rootX;
-            }
-        }
-
-        public int find(int x) {
-            if (x != parent[x]) {
-                parent[x] = find(parent[x]);
-            }
-            return parent[x];
+        return index;
+    }
+    private void union(int a, int b) {
+        int aParent = find(a);
+        int bParent = find(b);
+        if (aParent < bParent) {
+            parent[bParent] = aParent;
+        } else {
+            parent[aParent] = bParent;
         }
     }
 }
