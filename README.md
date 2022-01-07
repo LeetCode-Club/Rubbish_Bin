@@ -1,5 +1,5 @@
 # Rubbish_Bin
-We are all rubbish
+We are all rubbish <br>
 https://docs.google.com/spreadsheets/d/1pP6chRQ2D38A6XsYVvN-SJT9mvhS3RsHa6jcs5Lp78M/edit#gid=0
 
 ## Re:NEU上岸不完全指北
