@@ -10,3 +10,6 @@ https://docs.google.com/spreadsheets/d/1kBGyRsSdbGDu7DzjQcC-UkZjZERdrP8-_QyVGXHS
 
 ## FaceBook 面经
 https://docs.google.com/spreadsheets/d/165JUiszLVpTtcf082BMOt8IZ2fy-cL2G/edit?usp=sharing&ouid=114803883273924638498&rtpof=true&sd=true
+
+## Amazon 面经
+https://coda.io/d/Offer_dm5fzh3MwOp/Amazon_suEfQ#_lu4KG
